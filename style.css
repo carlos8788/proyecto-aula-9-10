@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
 
+:root{
+    --primary-green: #46A061;
+}
+
 *{
     margin: 0;
     padding: 0;
@@ -16,13 +20,20 @@ a{
     color: black;
 }
 
+.img-fondo{
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    z-index: -1;
+}
+
 /* HEADER */
 
 header{
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background-color: rgb(0, 0, 0);
+    background-color: rgb(91, 77, 77);
     
 }
 
@@ -38,13 +49,51 @@ header{
 
 .menu ul li a{
     color: white;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s ease-out, border-bottom 0.2s ease-out;
+}
+
+.menu ul li a:hover{
+    color: var(--primary-green);
+    border-bottom: 2px solid var(--primary-green);
+}
+
+.btn-menu {
+    display: none;
+}
+
+/* PSEUDOELEMENTO */
+.pseudo-flecha{
+    display: inline-flex; 
+    align-items: center;
+    gap: 5px;
+}
+.pseudo-flecha::after{
+    content: ' ';
+    display: inline-block;    
+    width: 20px;
+    height: 20px;
+    background-image: url('https://cdn-icons-png.flaticon.com/512/32/32195.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.pseudo-flecha:hover::after{
+
+    content: ' ';
+    display: inline-block;    
+    width: 20px;
+    height: 20px;
+    background-image: url('https://w7.pngwing.com/pngs/792/964/png-transparent-computer-icons-up-arrow-angle-black-arrow-icon.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 /* MAIN */
 
-.hero{
-    background: rgb(0,0,0);
-    background: radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(79,85,16,1) 37%, rgba(3,0,0,1) 58%); 
+.hero{        
     width: 100%;
     height: 900px;
     display: flex;
@@ -57,6 +106,11 @@ header{
     font-size: 50px;
     width: 500px;
     text-align: center;
+    text-shadow: 2px 2px 5px black;
+    /* TEXT-SHADOW */
+    /* primer parametro posición horizontal */
+    /* primer parametro posición vertical */
+    /* desenfoque */
 }
 
 .hero img {
@@ -96,11 +150,54 @@ footer h3 {
 }
 
 .resultados-links{
-    background-color: #46A061;
+    background-color: var(--primary-green);
     padding: 20px;
     color: white;
     margin-bottom: 20px;
     border-radius: 10px;
     font-weight: bolder;
     font-size: 25px;
+}
+
+/* < 1300px */
+
+@media (width < 1300px){
+    .img-fondo{
+        height: 70vh;
+    }
+
+    .hero{        
+        height: 600px;
+    }
+    
+    .hero h1 {
+        font-size: 30px;
+        width: 50%;
+    }
+    
+    .hero img {
+        width: 50%;
+        margin: 0 30px;
+    }
+
+    .menu ul {
+        display: none;   
+    }
+
+    .btn-menu {
+        display: inline;
+        border: none;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: var(--primary-green);
+        color: white;
+        font-weight: bolder;
+        transition: background-color .2s ease-out;
+    }
+
+    .btn-menu:hover {
+        background-color: green;
+    }
+
 }
